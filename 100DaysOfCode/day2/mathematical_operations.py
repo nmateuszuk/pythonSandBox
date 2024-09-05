@@ -6,6 +6,7 @@ print(type(6/3))  # implicit type casting
 # // to force it to be int --> doing first / and then get rid of numbers after dot
 print(type(6//3))
 print(2**3)  # 2 power of 3
+print(12 % 10)
 
 # PEMDAS L->R
 # ()
