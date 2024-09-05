@@ -26,26 +26,3 @@ if height >= 120:
 
 else:
     ("Too short to go")
-
-# ----------------------
-number_to_check = int(input("What number do you want to check? "))
-
-if number_to_check % 2 == 0:
-    print("Even")
-else:
-    print("Odd")
-
-# ----------------------
-weight = 85
-height = 1.85
-
-bmi = weight / (height ** 2)
-
-if bmi < 18.5:
-    print("underweight")
-elif bmi < 25:
-    print("normal weight")
-else:
-    print("overweight")
-
-# -----------------------------
