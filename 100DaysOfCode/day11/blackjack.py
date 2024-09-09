@@ -1,4 +1,5 @@
 import random
+from art import logo
 
 
 card_symbols = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
@@ -37,6 +38,8 @@ def sum_player_deck(cards):
 random.shuffle(deck)
 player_card = [deck.pop(), deck.pop()]
 dealer_card = [deck.pop(), deck.pop()]
+
+print(logo)
 
 while True:
     player_score = sum_player_deck(player_card)
