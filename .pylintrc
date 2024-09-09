@@ -1,3 +1,3 @@
 [MESSAGES CONTROL]
 
-disable=missing-module-docstring, missing-function-docstring, disallowed-name
+disable=missing-module-docstring, missing-function-docstring, disallowed-name, invalid-name
