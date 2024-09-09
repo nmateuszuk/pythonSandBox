@@ -1,15 +1,14 @@
 import random
 
 
-card_symbol = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
-cards_list = ['Ace', '2', '3', '4', '5', '6',
-              '7', '8', '9', '10', 'Jack', 'Queen', 'King']
+card_symbols = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+card_values = ['Ace', '2', '3', '4', '5', '6',
+               '7', '8', '9', '10', 'Jack', 'Queen', 'King']
 
 deck = []
-for symbol in card_symbol:
-    for card in cards_list:
-        deck.append((card, symbol))
-print(deck)
+for symbol in card_symbols:
+    for value in card_values:
+        deck.append((value, symbol))
 
 # deck = [(card, symbol) for symbol in card_symbol for card in cards_list]
 
@@ -28,8 +27,9 @@ def sum_player_deck(cards):
     if cards_sum <= 21:
         return cards_sum
 
-    if "Ace" in cards:
-        return cards_sum-10
+    for card in cards:
+        if card[0] == "Ace":
+            return cards_sum-10
 
     return cards_sum
 
@@ -45,12 +45,14 @@ while True:
     print("players cards: ", player_card)
     print("players score: ", player_score)
 
-    continue_game = input("'c' for card, 's' to stop").lower()
+    if player_score == 21:
+        break
+
+    continue_game = input("'c' for card, 's' to stop: ").lower()
 
     if continue_game == "c":
         card = deck.pop()
         player_card.append(card)
-
     elif continue_game == "s":
         break
     else:
@@ -58,12 +60,7 @@ while True:
         continue
     player_score = sum_player_deck(player_card)
     if player_score > 21:
-        print("players cards: ", player_card)
-        print("players score", player_score)
-        print("above 21, game over, busted")
-        print("dealer score", dealer_score)
-        print("\n")
-    break
+        break
 
 while dealer_score < 17:
     card = deck.pop()
@@ -74,7 +71,13 @@ print("Cards Dealer Has:", dealer_card)
 print("Score Of The Dealer:", dealer_score)
 print("\n")
 
-if dealer_score > 21:
+if player_score > 21:
+    print("players cards: ", player_card)
+    print("players score", player_score)
+    print("above 21, game over, busted")
+    print("dealer wins, dealer score", dealer_score)
+    print("\n")
+elif dealer_score > 21:
     print("Score Of The Dealer:", dealer_score)
     print("Score Of The Player:", player_score)
     print("Player wins, dealer busted")
