@@ -17,10 +17,11 @@ while True:
         print("Drink not found. Please try again.")
         continue
 
-    if coffeeMachine.is_resource_sufficient(menu.find_drink(pick)):
-        print(f"cost of drink {menu.return_price(pick)} ")
-        if moneyMachine.make_payment(menu.return_price(pick)):
-            coffeeMachine.make_coffee(menu.find_drink(pick))
+    drink = menu.find_drink(pick)
+    if coffeeMachine.is_resource_sufficient(drink):
+        print(f"cost of drink {drink.cost} ")
+        if moneyMachine.make_payment(drink.cost):
+            coffeeMachine.make_coffee(drink)
         else:
             continue
     else:
